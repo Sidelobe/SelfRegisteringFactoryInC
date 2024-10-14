@@ -36,6 +36,3 @@ This example assumes we have a series of "modules" that implement some given aud
 ![](https://img.shields.io/badge/branch-main-blue)
 [![Build & Test](https://github.com/Sidelobe/SelfRegisteringFactoryInC/actions/workflows/workflow.yml/badge.svg?branch=main)](https://github.com/Sidelobe/SelfRegisteringFactoryInC/actions/workflows/workflow.yml)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-![](https://img.shields.io/badge/branch-develop-blue)
-[![Build & Test](https://github.com/Sidelobe/SelfRegisteringFactoryInC/actions/workflows/workflow.yml/badge.svg?branch=develop)](https://github.com/Sidelobe/SelfRegisteringFactoryInC/actions/workflows/workflow.yml)
-****
