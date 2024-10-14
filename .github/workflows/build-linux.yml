@@ -3,14 +3,14 @@ on:
   workflow_call:
 jobs:
   build:
-    name: Linux, ${{matrix.cxx}}, C++${{matrix.std}}, ${{matrix.build_type}}
+    name: Linux, ${{matrix.cc}}, C${{matrix.cstd}}, ${{matrix.build_type}}
     runs-on: ubuntu-20.04
     strategy:
       fail-fast: false
       matrix:
-        cxx:
-          - g++-7
-          - g++-11
+        cc:
+          - gcc-7
+          - gcc-11
         build_type: [Debug, Release]
         cstd: [99]
         std: [14]

@@ -3,7 +3,7 @@ on:
   workflow_call:
 jobs:
   build:
-    name: ${{matrix.os}}, MSVC, C++${{matrix.std}}, ${{matrix.build_type}}, ${{matrix.platform}}
+    name: ${{matrix.os}}, MSVC, C${{matrix.cstd}}, ${{matrix.build_type}}, ${{matrix.platform}}
     runs-on: ${{matrix.os}}
     strategy:
       fail-fast: false
