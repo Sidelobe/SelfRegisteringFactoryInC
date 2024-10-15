@@ -11,6 +11,7 @@
 
 #include "Factory.h"
 
+#include <stdbool.h>
 #include <stdio.h> // strcmp
 #include <string.h> // memset
 
@@ -29,15 +30,28 @@ Factory* factory_getInstance()
 
 void registerModule(struct Factory* factory, const char* registeredType, CreatorFunction createFct)
 {
-    if (factory->numRegisteredModules < FACTORY_MAX_REGISTERED_MODULES) {
-        printf("Registering Module type: %s\n", registeredType);
-        factory->registry[factory->numRegisteredModules].creatorFct = createFct;
-        factory->registry[factory->numRegisteredModules].registeredType = registeredType;
-        factory->numRegisteredModules++;
-        
-    } else {
-        printf("Factory is overloaded: registry size cannot accomodate all modules!\n");
+    if (factory->numRegisteredModules >= FACTORY_MAX_REGISTERED_MODULES) {
+        printf("ERROR: Factory is overloaded: registry size cannot accomodate all modules!\n");
+        return;
     }
+    
+    bool isDuplicate = false;
+    for (int i=0; i < factory->numRegisteredModules; ++i) {
+        if (strcmp(factory->registry[i].registeredType, registeredType) == 0) {
+            isDuplicate = true;
+            break;
+        }
+    }
+    if (isDuplicate) {
+        printf("ERROR: Cannot register same type twice!\n", registeredType);
+        return;
+    }
+    
+    // Append tos end of registry
+    printf("Registering Module type: %s\n", registeredType);
+    factory->registry[factory->numRegisteredModules].creatorFct = createFct;
+    factory->registry[factory->numRegisteredModules].registeredType = registeredType;
+    factory->numRegisteredModules++;
 }
 
 struct Module* buildModule(struct Factory* factory, const char* moduleType)
